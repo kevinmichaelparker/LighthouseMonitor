@@ -9,6 +9,7 @@ using HtmlAgilityPack;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.IO;
+using System.Configuration;
 
 namespace SEOMonitor
 {
@@ -137,8 +138,8 @@ namespace SEOMonitor
         {
             try
             {
-                string lighthouseFile = @"C:\Projects\SEOMonitor\Reports\output.json";
-                string filename = @"C:\Projects\SEOMonitor\Reports\SuccessMetrics.csv";
+                string lighthouseFile = ConfigurationManager.AppSettings["LighthouseFile"];
+                string metricsFile = ConfigurationManager.AppSettings["MetricsFile"];
                 StringBuilder output = new StringBuilder();
                 DateTime measureDate = DateTime.Now;
 
@@ -163,7 +164,7 @@ namespace SEOMonitor
                     }
                     
                 }
-                SaveReport(output, filename);
+                SaveReport(output, metricsFile);
             }
             catch (Exception ex)
             {

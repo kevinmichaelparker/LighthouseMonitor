@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace SEOMonitor
 
         static Data()
         {
-            string path = Environment.CurrentDirectory + "scores.db";
+            string path = ConfigurationManager.AppSettings["DatabaseFile"];
             database = new SQLiteConnection(path);
         }
 
@@ -27,8 +28,33 @@ namespace SEOMonitor
         public static void Initialize()
         {
             database.Execute("UPDATE page SET Url = ?", "https://ra-blazor.cyberlancersseo.com");
-            
+
             /*
+
+
+        Per Abby
+
+            The list of pages for success metrics looks good. I think we’ll just need to make these changes:
+-	Add community page (ex. https://www.richmondamerican.com/california/inland-empire-new-homes/chino/gardenside-at-the-preserve)
+-	Add plan page (ex. https://www.richmondamerican.com/colorado/denver-metro-new-homes/arvada/haskins-station/anika) 
+-	Add QMI page  (ex. https://www.richmondamerican.com/nevada/las-vegas-new-homes/henderson/marble-mesa-at-lake-las-vegas/arabelle/30030000-0021 this QMI is available August 2022, but we may need to find a new QMI URL every once in a while. Or if it changes too often, we can stop tracking QMI pages)
+-	Add agent blog (we probably don’t need /blog/about us, so we can replace that one with https://www.richmondamerican.com/agent-blog/) 
+
+            https://www.richmondamerican.com
+https://www.richmondamerican.com/campaigns/1457
+https://www.richmondamerican.com/covid-19
+https://www.richmondamerican.com/arizona
+https://www.richmondamerican.com/arizona/phoenix-new-homes
+https://www.richmondamerican.com/design-a-home
+https://www.richmondamerican.com/about-us
+https://www.richmondamerican.com/career-center
+https://www.richmondamerican.com/contact-us
+https://www.richmondamerican.com/real-estate-agents-center
+https://www.richmondamerican.com/guides/homebuying
+https://www.richmondamerican.com/new-home-events
+https://www.richmondamerican.com/blog
+https://www.richmondamerican.com/blog/about-us
+       
             database.DeleteAll<Score>();
             database.DeleteAll<Page>();
             database.DeleteAll<Site>();
