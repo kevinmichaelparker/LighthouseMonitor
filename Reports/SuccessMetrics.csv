@@ -1,0 +1,5 @@
+Url,Date,Performance,Accessibility,Best Practices,SEO,PWA,Largest Contentful Paint,Cumulative Layout Shift,First Input Delay
+https://richmondamerican.com,5/6/2022 8:20:40 AM,69,83,100,80,30,5.7 s,0,50 ms
+https://richmondamerican.com,4/29/2022 10:22:21 AM,6,73,75,70,30,9.9 s,0.654,920 ms
+https://richmondamerican.com,4/28/2022 9:37:16 AM,6,69,75,69,30,8.3 s,0.578,960 ms
+https://richmondamerican.com,4/27/2022 8:55:59 AM,7,73,75,70,30,9.9 s,0.642,920 ms
